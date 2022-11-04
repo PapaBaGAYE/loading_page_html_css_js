@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .content{
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            /* background-color: aqua; */
+            z-index: 100;
+            transition: visibility 1s ease, opacity 1s ease;
+        }
+
+        .chargement{
+            width: 75px; height: 75px;
+            border: 5px solid #616161;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+            border-top: 5px solid #5cb85c;
+            border-radius: 50%;
+            animation: chargement 1s linear infinite;
+        }
+
+        .disparaitre{
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .apparaitre{
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @keyframes chargement {
+            0%{
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100%{
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <div class="chargement">
+
+        </div>
+        <p style="text-align : center; font-size : 15px; color : #5cb85c; position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);">C H A R G E M E N T . . .</p>
+    </div>
+
+    <script>
+        function afficher()
+        {
+            document.querySelector(".content").classList.remove('disparaitre');
+            document.querySelector(".content").classList.add('apparaitre');
+        }
+
+        function cacher()
+        {
+            document.querySelector(".content").classList.remove('apparaitre');
+            document.querySelector(".content").classList.add('disparaitre');
+        }
+
+        // const chargement = document.querySelector(".content");
+
+        window.addEventListener('load', () => {
+            cacher();
+        })
+    </script>
+</body>
+</html>
